@@ -1,0 +1,81 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Code2, Palette, Zap } from "lucide-react";
+
+const About = () => {
+  const skills = [
+    {
+      icon: Code2,
+      title: "Desenvolvimento",
+      description: "React, TypeScript, Node.js, Python, PHP e muito mais"
+    },
+    {
+      icon: Palette,
+      title: "Design",
+      description: "UI/UX, Figma, Adobe Creative Suite, Design Systems"
+    },
+    {
+      icon: Zap,
+      title: "Performance",
+      description: "Otimização, SEO, Acessibilidade, Clean Code"
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="scroll-fade-in text-center mb-16">
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            Sobre <span className="text-lime-500">Mim</span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Desenvolvedor apaixonado por criar soluções digitais que fazem a diferença. 
+            Com mais de 5 anos de experiência, transformo ideias em realidade através do código.
+          </p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+          <div className="scroll-slide-left">
+            <div className="relative">
+              <div className="w-full h-96 rounded-2xl gradient-lime relative overflow-hidden">
+                <div className="absolute inset-0 dots-pattern opacity-30"></div>
+                <div className="absolute bottom-4 left-4 right-4 p-6 bg-white/90 backdrop-blur-sm rounded-xl">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    Sempre aprendendo
+                  </h3>
+                  <p className="text-gray-600">
+                    Tecnologia evolui rápido, e eu evoluo junto
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="scroll-slide-right space-y-6">
+            {skills.map((skill, index) => (
+              <Card 
+                key={index} 
+                className="border-2 border-lime-200 hover:border-lime-400 transition-portfolio shadow-portfolio hover:shadow-xl"
+              >
+                <CardContent className="p-6 flex items-start gap-4">
+                  <div className="portfolio-lime p-3 rounded-xl">
+                    <skill.icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {skill.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {skill.description}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;
