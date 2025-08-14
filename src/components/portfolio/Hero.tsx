@@ -4,22 +4,20 @@ import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen relative overflow-hidden flex items-center justify-center">
-      {/* Background image with overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/lovable-uploads/874b2449-32a4-4973-88f2-9b632b8a5f53.png')"
-        }}
-      ></div>
-      
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50"></div>
-      
+    <section className="min-h-screen gradient-hero relative overflow-hidden flex items-center justify-center">
       {/* Animated background elements */}
-      <div className="absolute inset-0 dots-pattern opacity-10"></div>
-      <div className="absolute top-20 right-20 w-32 h-32 rounded-full gradient-lime opacity-20 animate-float"></div>
-      <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full portfolio-lime opacity-30 animate-pulse-glow"></div>
+      <div className="absolute inset-0 dots-pattern opacity-20"></div>
+      <div className="absolute top-20 right-20 w-32 h-32 rounded-full gradient-lime opacity-30 animate-float"></div>
+      <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full portfolio-lime opacity-40 animate-pulse-glow"></div>
+      
+      {/* Smaller image in top right corner */}
+      <div className="absolute top-8 right-8 w-48 h-48 md:w-64 md:h-64 rounded-lg overflow-hidden shadow-elegant z-10">
+        <img 
+          src="/lovable-uploads/874b2449-32a4-4973-88f2-9b632b8a5f53.png"
+          alt="Portfolio showcase"
+          className="w-full h-full object-cover"
+        />
+      </div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="scroll-fade-in">
