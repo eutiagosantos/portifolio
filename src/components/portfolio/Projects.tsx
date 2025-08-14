@@ -1,9 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ExternalLink, Github, Eye } from "lucide-react";
+import { useState } from "react";
 
 const Projects = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const projects = [
     {
       title: "E-commerce Platform",
@@ -110,6 +114,39 @@ const Projects = () => {
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Demo
                       </Button>
+                      {project.featured && (
+                        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                          <DialogTrigger asChild>
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              className="text-lime-400 border-lime-400 hover:bg-lime-400 hover:text-gray-900"
+                            >
+                              <Eye className="w-4 h-4 mr-2" />
+                              Design
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl bg-gray-900/95 border-lime-400/30">
+                            <DialogHeader>
+                              <DialogTitle className="text-white text-2xl">
+                                Design Inspiração - {project.title}
+                              </DialogTitle>
+                            </DialogHeader>
+                            <div className="relative overflow-hidden rounded-lg">
+                              <img 
+                                src="/lovable-uploads/9e439c2c-a236-4afb-99ad-48af21ea5a1c.png" 
+                                alt="Design Pattern Inspiration"
+                                className="w-full h-auto object-contain"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
+                            </div>
+                            <p className="text-gray-300 text-center mt-4">
+                              Padrão de design abstrato com pontos em gradiente verde e lime, 
+                              inspiração para elementos visuais modernos.
+                            </p>
+                          </DialogContent>
+                        </Dialog>
+                      )}
                     </div>
                   </CardContent>
                 </div>
