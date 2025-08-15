@@ -8,4 +8,5 @@
 
 
 # Wireframe:
-![Wireframe do Portfólio](docs/Screenshot%202025-08-15%20at%2011.17.23%201.png)
+
+![Wireframe do Portfólio](docs/Screenshot-2025-08-15-at-11-17-23-1.png)
