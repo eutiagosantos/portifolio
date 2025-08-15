@@ -1,9 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ExternalLink, Github, Eye } from "lucide-react";
+import { useState } from "react";
 
 const Projects = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   const projects = [
     {
       title: "PlanWay",

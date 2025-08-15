@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 
@@ -74,3 +75,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
