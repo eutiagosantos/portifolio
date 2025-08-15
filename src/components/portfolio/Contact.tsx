@@ -9,19 +9,19 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      info: "seu.email@exemplo.com",
-      link: "mailto:seu.email@exemplo.com"
+      info: "tiagoalmeidasantos1812@gmail.com",
+      link: "mailto:tiagoalmeidasantos1812@gmail.com"
     },
     {
       icon: Phone,
       title: "Telefone",
-      info: "+55 (11) 99999-9999",
-      link: "tel:+5511999999999"
+      info: "+55 (31) 99694-2653",
+      link: "tel:+5531996942653"
     },
     {
       icon: MapPin,
       title: "Localização",
-      info: "São Paulo, SP - Brasil",
+      info: "Belo Horizonte, MG - Brasil",
       link: "#"
     }
   ];
@@ -30,18 +30,13 @@ const Contact = () => {
     {
       icon: Github,
       name: "GitHub",
-      link: "https://github.com/seuperfil"
+      link: "https://github.com/eutiagosantos"
     },
     {
       icon: Linkedin,
       name: "LinkedIn",
-      link: "https://linkedin.com/in/seuperfil"
+      link: "https://www.linkedin.com/in/tiago-de-almeida-santos-94b19b1b2/"
     },
-    {
-      icon: Mail,
-      name: "Email",
-      link: "mailto:seu.email@exemplo.com"
-    }
   ];
 
   return (

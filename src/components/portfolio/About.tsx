@@ -6,17 +6,12 @@ const About = () => {
     {
       icon: Code2,
       title: "Desenvolvimento",
-      description: "React, TypeScript, Node.js, Python, PHP e muito mais"
-    },
-    {
-      icon: Palette,
-      title: "Design",
-      description: "UI/UX, Figma, Adobe Creative Suite, Design Systems"
+      description: "Java (Spring Framework), Node.js, PostgreSQL, MySQL, Docker"
     },
     {
       icon: Zap,
-      title: "Performance",
-      description: "Otimização, SEO, Acessibilidade, Clean Code"
+      title: "Padrões de Projeto e Boas práticas",
+      description: "Strategy, Builder, MVC, Clean Code"
     }
   ];
 
@@ -28,8 +23,8 @@ const About = () => {
             Sobre <span className="text-lime-500">Mim</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Desenvolvedor apaixonado por criar soluções digitais que fazem a diferença. 
-            Com mais de 5 anos de experiência, transformo ideias em realidade através do código.
+            Dlalalalalalllllldffddsnfjnfjldnsjlnflsfkjdkfnksncldngsjklfl dgshdl
+            fnljfnld
           </p>
         </div>
         

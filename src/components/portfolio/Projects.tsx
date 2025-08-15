@@ -6,38 +6,40 @@ import { ExternalLink, Github } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "E-commerce Platform",
+      title: "PlanWay",
       description: "Plataforma completa de e-commerce com dashboard administrativo, sistema de pagamentos e gestão de estoque.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop",
       technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      image: "/telaPrincipal-planway.jpeg",
       featured: true
     },
     {
-      title: "Task Management App",
-      description: "Aplicativo de gestão de tarefas com colaboração em tempo real e analytics avançados.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
-      technologies: ["React", "Firebase", "Tailwind CSS"],
+      title: "BuildCLI",
+      description: "Colaboração com testes unitários para um projeto open source",
+      image: "/BUILD-CLI-IMAGE.png",
+      technologies: ["Java", "Spring Boot", "Mockito", "JUnit"],
       featured: false
     },
     {
-      title: "AI Chat Interface",
-      description: "Interface de chat moderna integrada com IA para atendimento automatizado ao cliente.",
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=250&fit=crop",
-      technologies: ["Next.js", "OpenAI API", "TypeScript"],
+      title: "app-gympass",
+      description: "Backend desenvolvido com o intuito de imitar o funcionamento da regras de negócios principais do Gympass",
+      image: "/logo-gympass.jpg",
+      technologies: ["Typescript", "TDD", "PostrgreSQL", "Docker", "Prisma", "Vitest"],
       featured: true
     },
     {
-      title: "Portfolio Website",
-      description: "Site de portfólio responsivo com animações e design moderno para artista digital.",
-      image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=400&h=250&fit=crop",
-      technologies: ["React", "Framer Motion", "Sanity"],
+      title: "desafio-backend-nubank",
+      description: "Fazendo um desafio de backend nubank com java",
+      image: "/nubank-image.png",
+      technologies: ["Java", "Spring Boot", "PostgreSQL", "Docker"],
       featured: false
     }
   ];
 
   return (
     <section className="py-20 portfolio-dark">
+      
       <div className="container mx-auto px-6">
+        
         <div className="scroll-fade-in text-center mb-16">
           <h2 className="text-5xl font-bold text-white mb-6">
             Meus <span className="text-lime-400">Projetos</span>
@@ -49,6 +51,7 @@ const Projects = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
+          
           {projects.map((project, index) => (
             <Card 
               key={index}
@@ -72,6 +75,7 @@ const Projects = () => {
                 </div>
                 
                 <div className={`${project.featured ? 'md:w-1/2' : ''}`}>
+                  
                   <CardHeader>
                     <CardTitle className="text-white text-2xl mb-2">
                       {project.title}
@@ -80,6 +84,7 @@ const Projects = () => {
                       {project.description}
                     </p>
                   </CardHeader>
+                  
                   
                   <CardContent>
                     <div className="flex flex-wrap gap-2 mb-6">
@@ -95,21 +100,14 @@ const Projects = () => {
                     </div>
                     
                     <div className="flex gap-4">
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="text-white border-white hover:bg-white hover:text-gray-900"
+                      <button
+                        onClick={() => window.open(`https://github.com/eutiagosantos/${project.title}`, "_blank", "noopener,noreferrer")}
+                        className="px-4 py-2 bg-lime-500 text-white rounded hover:bg-lime-600 transition-portfolio"
+                        type="button"
                       >
-                        <Github className="w-4 h-4 mr-2" />
                         Código
-                      </Button>
-                      <Button 
-                        size="sm"
-                        className="portfolio-lime"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        Demo
-                      </Button>
+                      </button>
+                     
                     </div>
                   </CardContent>
                 </div>
@@ -120,6 +118,7 @@ const Projects = () => {
 
         <div className="scroll-scale text-center mt-12">
           <Button 
+            onClick={() => window.open(`https://github.com/eutiagosantos/?tab=repositories`, "_blank", "noopener,noreferrer")}
             variant="outline" 
             size="lg"
             className="text-white border-white hover:bg-white hover:text-gray-900"
@@ -127,6 +126,7 @@ const Projects = () => {
             Ver Todos os Projetos
           </Button>
         </div>
+      
       </div>
     </section>
   );

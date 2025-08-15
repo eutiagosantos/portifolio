@@ -39,7 +39,7 @@ const Navigation = () => {
               text-2xl font-bold transition-portfolio
               ${isScrolled ? 'text-gray-900' : 'text-white'}
             `}>
-              Portfolio
+              <span style={{ color: "black" }}>Tiago de Almeida Santos</span>
             </span>
           </div>
 
