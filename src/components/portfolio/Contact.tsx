@@ -3,6 +3,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const contactInfo = [
@@ -38,6 +40,13 @@ const Contact = () => {
       link: "https://www.linkedin.com/in/tiago-de-almeida-santos-94b19b1b2/"
     },
   ];
+
+  const navigate = useNavigate();
+
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    navigate('/animation');
+  }, [navigate]);
 
   return (
     <section className="py-20 gradient-hero relative overflow-hidden">
@@ -115,7 +124,7 @@ const Contact = () => {
                   Envie uma Mensagem
                 </h3>
                 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <Input

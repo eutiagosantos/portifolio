@@ -12,7 +12,7 @@ const Projects = () => {
     {
       title: "PlanWay",
       description: "Plataforma completa de e-commerce com dashboard administrativo, sistema de pagamentos e gestão de estoque.",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      technologies: ["React", "Spring Boot", "PostgreSQL"],
       image: "/telaPrincipal-planway.jpeg",
       featured: true
     },
@@ -54,6 +54,8 @@ const Projects = () => {
           </p>
         </div>
 
+        
+
         <div className="grid md:grid-cols-2 gap-8">
           
           {projects.map((project, index) => (
@@ -63,7 +65,7 @@ const Projects = () => {
                 bg-white/5 backdrop-blur-sm border-white/20 hover:bg-white/10 
                 transition-portfolio group overflow-hidden
                 ${project.featured ? 'md:col-span-1 lg:col-span-2' : ''}
-                ${index % 2 === 0 ? 'scroll-slide-left' : 'scroll-slide-right'}
+                active ${index % 2 === 0 ? 'scroll-slide-left' : 'scroll-slide-right'}
               `}
             >
               <div className={`${project.featured ? 'md:flex' : ''}`}>

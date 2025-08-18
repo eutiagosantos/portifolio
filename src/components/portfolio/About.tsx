@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Code2, Palette, Zap } from "lucide-react";
+import AboutTrooper from "@/components/portfolio/AboutTrooper";
 
 const About = () => {
   const skills = [
@@ -30,19 +31,7 @@ const About = () => {
         
         <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
           <div className="scroll-slide-left">
-            <div className="relative">
-              <div className="w-full h-96 rounded-2xl gradient-lime relative overflow-hidden">
-                <div className="absolute inset-0 dots-pattern opacity-30"></div>
-                <div className="absolute bottom-4 left-4 right-4 p-6 bg-white/90 backdrop-blur-sm rounded-xl">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Sempre aprendendo
-                  </h3>
-                  <p className="text-gray-600">
-                    Tecnologia evolui rápido, e eu evoluo junto
-                  </p>
-                </div>
-              </div>
-            </div>
+            <AboutTrooper />
           </div>
           
           <div className="scroll-slide-right space-y-6">

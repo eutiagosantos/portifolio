@@ -1,6 +1,10 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import "../style/hero.css";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import HeroSpotlight from "@/components/portfolio/HeroSpotlight";
 
 function EmailLink({ email, children }) {
   return (
@@ -11,6 +15,7 @@ function EmailLink({ email, children }) {
 }
 
 const Hero = () => {
+  
   return (
     <section className="min-h-screen gradient-hero relative overflow-hidden flex items-center justify-center">
       {/* Animated background elements */}
@@ -19,7 +24,7 @@ const Hero = () => {
       <div className="absolute bottom-20 left-20 w-24 h-24 rounded-full portfolio-lime opacity-40 animate-pulse-glow"></div>
 
       <div className="container mx-auto pl-6 relative z-10">
-        <div className="scroll-fade-in flex flex-col md:flex-row items-center md:items-start gap-8">
+        <div className="scroll-fade-in grid grid-cols-1 md:grid-cols-2 items-center gap-8">
 
           {/* Texto */}
           <div className="text-center md:text-left flex-1">
@@ -56,16 +61,12 @@ const Hero = () => {
               </a>
             </div>
           </div>
+          <div className="w-full">
+            <HeroSpotlight />
+          </div>
         </div>
       </div>
 
-      <img
-        src="/imagem-mao.png"
-        alt="Mão decorativa"
-        className="pointer-events-none select-none w-[24rem] opacity-20 absolute top-1/2 right-0 -translate-y-1/2"
-        style={{ objectFit: "contain", border:'none', borderRadius:0 }}
-        aria-hidden="true"
-      />
 
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ArrowDown className="text-white w-8 h-8" />

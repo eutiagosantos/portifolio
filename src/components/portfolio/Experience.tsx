@@ -4,7 +4,9 @@ import { FaGithub, FaJava } from "react-icons/fa";
 import { SiSpring } from "react-icons/si";
 import { FaNodeJs } from "react-icons/fa";
 import { FaDocker } from "react-icons/fa";
-
+import { useEffect, useRef } from "react";
+import "../style/hero.css"
+import {gsap} from "gsap"
 const Experience = () => {
   const experiences = [
     {
@@ -20,8 +22,10 @@ const Experience = () => {
     },
   ];
 
+
   return (
     <section className="py-20 bg-gray-50">
+    
 
       <div className="flex justify-center items-start pt-4 mb-10">
         <FaJava size={48} color="hsl(150 100% 12%)" />
