@@ -10,9 +10,9 @@ export class EmailService {
     const { name, email, subject, message } = contactData;
 
     await this.mailerService.sendMail({
-      to: 'tiagoalmeidasantos1812@gmail.com', // Seu email de destino
+      to: 'tiagoalmeidasantos1812@gmail.com', /
       subject: `Nova mensagem de contato: ${subject}`,
-      template: 'contact', // Nome do template (vamos criar)
+      template: 'contact', 
       context: {
         name,
         email,
@@ -22,7 +22,6 @@ export class EmailService {
       },
     });
 
-    // Enviar confirmação para o remetente
     await this.mailerService.sendMail({
       to: email,
       subject: 'Confirmação de mensagem enviada - Tiago Santos',
