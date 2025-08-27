@@ -24,21 +24,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className={`
-      fixed top-0 left-0 right-0 z-50 transition-portfolio
-      ${isScrolled 
-        ? 'bg-white/90 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
-      }
-    `}>
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-portfolio bg-white/90 backdrop-blur-md shadow-lg">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <span className={`
-              text-2xl font-bold transition-portfolio
-              ${isScrolled ? 'text-gray-900' : 'text-white'}
-            `}>
+            <span className="text-2xl font-bold transition-portfolio text-gray-900">
               <span style={{ color: "black" }}>Tiago de Almeida Santos</span>
             </span>
           </div>
@@ -49,25 +40,13 @@ const Navigation = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className={`
-                  transition-portfolio hover:scale-105 font-medium
-                  ${isScrolled 
-                    ? 'text-gray-700 hover:text-lime-600' 
-                    : 'text-white hover:text-lime-400'
-                  }
-                `}
+                className="transition-portfolio hover:scale-105 font-medium text-gray-700 hover:text-lime-600"
               >
                 {item.name}
               </a>
             ))}
             <Button 
-              className={`
-                transition-portfolio
-                ${isScrolled 
-                  ? 'portfolio-lime' 
-                  : 'bg-lime-400 hover:bg-lime-500 text-gray-900'
-                }
-              `}
+              className="transition-portfolio portfolio-lime"
             >
               Contratar
             </Button>
@@ -79,9 +58,7 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`
-                ${isScrolled ? 'text-gray-900' : 'text-white'}
-              `}
+              className="text-gray-900"
             >
               {isMenuOpen ? <X /> : <Menu />}
             </Button>

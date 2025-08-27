@@ -40,7 +40,7 @@ const Projects = () => {
   ];
 
   return (
-    <section className="py-20 portfolio-dark">
+    <section id="projects" className="py-20 portfolio-dark">
       
       <div className="container mx-auto px-6">
         

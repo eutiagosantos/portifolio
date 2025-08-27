@@ -16,6 +16,16 @@ function EmailLink({ email, children }) {
 
 const Hero = () => {
   
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+  
   return (
     <section className="min-h-screen gradient-hero relative overflow-hidden flex items-center justify-center">
       {/* Animated background elements */}
@@ -39,17 +49,12 @@ const Hero = () => {
             <div className="scroll-scale flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
               <Button
                 size="lg"
+                onClick={scrollToProjects}
                 className="portfolio-lime text-lg px-8 py-6 hover:scale-105 transition-portfolio"
               >
                 Ver Projetos
               </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-white border-white hover:bg-white hover:text-gray-900 text-lg px-8 py-6 transition-portfolio"
-              >
-                Baixar CV
-              </Button>
+             
             </div>
 
             <div className="scroll-slide-left flex justify-center md:justify-start gap-6">

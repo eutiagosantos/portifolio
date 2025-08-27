@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -23,40 +23,6 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      title: "Email",
-      info: "tiagoalmeidasantos1812@gmail.com",
-      link: "mailto:tiagoalmeidasantos1812@gmail.com"
-    },
-    {
-      icon: Phone,
-      title: "Telefone",
-      info: "+55 (31) 99694-2653",
-      link: "tel:+5531996942653"
-    },
-    {
-      icon: MapPin,
-      title: "Localização",
-      info: "Belo Horizonte, MG - Brasil",
-      link: "#"
-    }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      name: "GitHub",
-      link: "https://github.com/eutiagosantos"
-    },
-    {
-      icon: Linkedin,
-      name: "LinkedIn",
-      link: "https://www.linkedin.com/in/tiago-de-almeida-santos-94b19b1b2/"
-    },
-  ];
 
   const navigate = useNavigate();
 
@@ -123,58 +89,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Information */}
-          <div className="scroll-slide-left">
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-3xl font-bold text-white mb-6">
-                  Informações de Contato
-                </h3>
-                <p className="text-gray-300 mb-8">
-                  Estou sempre aberto para discutir novas oportunidades e projetos interessantes. 
-                  Entre em contato através dos canais abaixo:
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                {contactInfo.map((contact, index) => (
-                  <a
-                    key={index}
-                    href={contact.link}
-                    className="flex items-center gap-4 p-4 rounded-xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-portfolio group"
-                  >
-                    <div className="portfolio-lime p-3 rounded-lg group-hover:scale-110 transition-portfolio">
-                      <contact.icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-semibold">{contact.title}</h4>
-                      <p className="text-gray-300">{contact.info}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-
-              <div className="pt-8">
-                <h4 className="text-white font-semibold mb-4">Me siga nas redes:</h4>
-                <div className="flex gap-4">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.link}
-                      className="p-3 rounded-full bg-white/10 hover:bg-lime-400 hover:text-gray-900 text-white transition-portfolio group"
-                      title={social.name}
-                    >
-                      <social.icon className="w-6 h-6 group-hover:scale-110 transition-portfolio" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
+        <div className="max-w-2xl mx-auto">
           {/* Contact Form */}
-          <div className="scroll-slide-right">
+          <div className="scroll-slide-up">
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardContent className="p-8">
                 <h3 className="text-3xl font-bold text-white mb-6">

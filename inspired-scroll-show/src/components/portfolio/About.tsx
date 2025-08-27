@@ -24,8 +24,7 @@ const About = () => {
             Sobre <span className="text-lime-500">Mim</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Dlalalalalalllllldffddsnfjnfjldnsjlnflsfkjdkfnksncldngsjklfl dgshdl
-            fnljfnld
+            Sou estudante de Engenharia de Software com foco em desenvolvimento back-end, utilizando principalmente Java com Spring Boot, Node.js com NestJS, Reactjs e Nextjs. Tenho experiência na construção de APIs e sistemas escaláveis, aplicando boas práticas de arquitetura e versionamento de código. Busco constantemente evoluir minhas habilidades técnicas e contribuir em projetos desafiadores que envolvam inovação e crescimento contínuo.
           </p>
         </div>
         
