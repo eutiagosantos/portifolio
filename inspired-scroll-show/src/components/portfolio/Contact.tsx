@@ -42,6 +42,8 @@ const Contact = () => {
     try {
       // Usar a URL da API do ambiente ou fallback para desenvolvimento
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      console.log('API URL being used:', apiUrl); // Debug log
+      
       const response = await fetch(`${apiUrl}/contact/send`, {
         method: 'POST',
         headers: {
@@ -50,7 +52,15 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
+      console.log('Response status:', response.status); // Debug log
+      console.log('Response headers:', response.headers); // Debug log
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
+      console.log('Response result:', result); // Debug log
 
       if (result.success) {
         setSubmitStatus('success');
@@ -66,8 +76,15 @@ const Contact = () => {
         setStatusMessage(result.message || 'Erro ao enviar mensagem');
       }
     } catch (error) {
+      console.error('Fetch error:', error); // Debug log
       setSubmitStatus('error');
-      setStatusMessage('Erro de conexão. Verifique se o servidor está rodando.');
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        setStatusMessage('Erro de rede. Verifique sua conexão com a internet.');
+      } else if (error instanceof Error) {
+        setStatusMessage(`Erro: ${error.message}`);
+      } else {
+        setStatusMessage('Erro de conexão. Verifique se o servidor está rodando.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -99,6 +116,11 @@ const Contact = () => {
                 <h3 className="text-3xl font-bold text-white mb-6">
                   Envie uma Mensagem
                 </h3>
+                
+                {/* Debug info - remover após resolver */}
+                <div className="mb-4 p-2 bg-blue-500/20 border border-blue-500/30 rounded text-blue-300 text-sm">
+                  Debug: API URL = {import.meta.env.VITE_API_URL || 'http://localhost:3000 (fallback)'}
+                </div>
                 
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
