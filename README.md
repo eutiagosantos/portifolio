@@ -267,9 +267,6 @@ Para o funcionamento do formulário de contato:
 
 ### 🎯 Testes Realizados
 
-- ✅ iPhone (diversos modelos)
-- ✅ Android (diversos modelos)
-- ✅ iPad / Tablets
 - ✅ Desktop (diversos tamanhos)
 - ✅ Navegadores modernos
 
