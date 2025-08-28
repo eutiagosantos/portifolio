@@ -40,7 +40,7 @@ const Contact = () => {
     setStatusMessage('');
 
     try {
-      const response = await fetch('http://localhost:3000/contact/send', {
+      const response = await fetch(process.env.API_URL + '/contact/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
