@@ -9,6 +9,19 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  build: {
+    // Force cache invalidation
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        entryFileNames: `[name]-[hash].js`,
+        chunkFileNames: `[name]-[hash].js`,
+        assetFileNames: `[name]-[hash].[ext]`,
+      },
+    },
+    // Clear dist on build
+    emptyOutDir: true,
+  },
   plugins: [
     react(),
     mode === 'development' &&
