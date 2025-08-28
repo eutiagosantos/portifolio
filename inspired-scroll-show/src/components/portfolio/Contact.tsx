@@ -13,6 +13,13 @@ interface ContactForm {
   message: string;
 }
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
 const Contact = () => {
   const [formData, setFormData] = useState<ContactForm>({
     name: '',
@@ -20,21 +27,83 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [touchedFields, setTouchedFields] = useState<Set<keyof ContactForm>>(new Set());
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [statusMessage, setStatusMessage] = useState('');
 
   const navigate = useNavigate();
 
+  // Funções de validação
+  const validateField = (field: keyof ContactForm, value: string): string | undefined => {
+    switch (field) {
+      case 'name':
+        if (!value.trim()) return 'Nome é obrigatório';
+        if (value.trim().length < 2) return 'Nome deve ter pelo menos 2 caracteres';
+        break;
+      case 'email':
+        if (!value.trim()) return 'Email é obrigatório';
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(value)) return 'Digite um email válido';
+        break;
+      case 'subject':
+        if (!value.trim()) return 'Assunto é obrigatório';
+        if (value.trim().length < 3) return 'Assunto deve ter pelo menos 3 caracteres';
+        break;
+      case 'message':
+        if (!value.trim()) return 'Mensagem é obrigatória';
+        if (value.trim().length < 10) return 'Mensagem deve ter pelo menos 10 caracteres';
+        break;
+    }
+    return undefined;
+  };
+
+  const validateForm = (): boolean => {
+    const errors: FormErrors = {};
+    (Object.keys(formData) as Array<keyof ContactForm>).forEach(field => {
+      const error = validateField(field, formData[field]);
+      if (error) errors[field] = error;
+    });
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleInputChange = (field: keyof ContactForm, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
+    
+    // Validar campo em tempo real se já foi tocado
+    if (touchedFields.has(field)) {
+      const error = validateField(field, value);
+      setFormErrors(prev => ({
+        ...prev,
+        [field]: error
+      }));
+    }
+  };
+
+  const handleFieldBlur = (field: keyof ContactForm) => {
+    setTouchedFields(prev => new Set(prev).add(field));
+    const error = validateField(field, formData[field]);
+    setFormErrors(prev => ({
+      ...prev,
+      [field]: error
+    }));
   };
 
   const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // Validar formulário antes de enviar
+    if (!validateForm()) {
+      setSubmitStatus('error');
+      setStatusMessage('Por favor, corrija os erros no formulário antes de enviar.');
+      return;
+    }
+    
     setIsLoading(true);
     setSubmitStatus('idle');
     setStatusMessage('');
@@ -74,6 +143,8 @@ const Contact = () => {
           subject: '',
           message: ''
         });
+        setFormErrors({});
+        setTouchedFields(new Set());
       } else {
         setSubmitStatus('error');
         setStatusMessage(result.message || 'Erro ao enviar mensagem');
@@ -139,9 +210,15 @@ const Contact = () => {
                         placeholder="Seu nome"
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
+                        onBlur={() => handleFieldBlur('name')}
                         required
-                        className="bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400"
+                        className={`bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400 ${
+                          formErrors.name ? 'border-red-400 focus:border-red-400' : ''
+                        }`}
                       />
+                      {formErrors.name && (
+                        <p className="text-red-400 text-sm mt-1">{formErrors.name}</p>
+                      )}
                     </div>
                     <div>
                       <Input
@@ -149,28 +226,61 @@ const Contact = () => {
                         placeholder="Seu email"
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
+                        onBlur={() => handleFieldBlur('email')}
                         required
-                        className="bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400"
+                        className={`bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400 ${
+                          formErrors.email ? 'border-red-400 focus:border-red-400' : ''
+                        }`}
                       />
+                      {formErrors.email && (
+                        <p className="text-red-400 text-sm mt-1">{formErrors.email}</p>
+                      )}
                     </div>
                   </div>
                   
-                  <Input
-                    placeholder="Assunto"
-                    value={formData.subject}
-                    onChange={(e) => handleInputChange('subject', e.target.value)}
-                    required
-                    className="bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400"
-                  />
+                  <div>
+                    <Input
+                      placeholder="Assunto"
+                      value={formData.subject}
+                      onChange={(e) => handleInputChange('subject', e.target.value)}
+                      onBlur={() => handleFieldBlur('subject')}
+                      required
+                      className={`bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400 ${
+                        formErrors.subject ? 'border-red-400 focus:border-red-400' : ''
+                      }`}
+                    />
+                    {formErrors.subject && (
+                      <p className="text-red-400 text-sm mt-1">{formErrors.subject}</p>
+                    )}
+                  </div>
                   
-                  <Textarea
-                    placeholder="Sua mensagem..."
-                    rows={6}
-                    value={formData.message}
-                    onChange={(e) => handleInputChange('message', e.target.value)}
-                    required
-                    className="bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400 resize-none"
-                  />
+                  <div>
+                    <Textarea
+                      placeholder="Sua mensagem..."
+                      rows={6}
+                      value={formData.message}
+                      onChange={(e) => handleInputChange('message', e.target.value)}
+                      onBlur={() => handleFieldBlur('message')}
+                      required
+                      className={`bg-white/10 border-white/30 text-white placeholder:text-gray-300 focus:border-lime-400 resize-none ${
+                        formErrors.message ? 'border-red-400 focus:border-red-400' : ''
+                      }`}
+                    />
+                    <div className="flex justify-between items-center mt-1">
+                      {formErrors.message && (
+                        <p className="text-red-400 text-sm">{formErrors.message}</p>
+                      )}
+                      <p className={`text-sm ml-auto ${
+                        formData.message.length < 10 
+                          ? 'text-red-400' 
+                          : formData.message.length >= 10 
+                          ? 'text-green-400' 
+                          : 'text-gray-400'
+                      }`}>
+                        {formData.message.length}/10 caracteres mínimos
+                      </p>
+                    </div>
+                  </div>
                   
                   <Button 
                     type="submit"
