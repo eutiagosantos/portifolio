@@ -5,8 +5,21 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors();
-  await app.listen(process.env.FRONT_URL ?? 3000);
+  // Configurar CORS para produção e desenvolvimento
+  app.enableCors({
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000', 
+      'http://localhost:4173',
+      'http://localhost:8080',
+      'http://localhost:8081',
+      'https://portifolio-ashen-xi.vercel.app', // Para Vercel
+      process.env.FRONTEND_URL // URL do frontend em produção
+    ].filter(Boolean),
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+  });
   
   // Configurar validação global
   app.useGlobalPipes(new ValidationPipe({
@@ -14,7 +27,10 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
     transform: true,
   }));
+
+  const port = process.env.PORT ?? 3000;
+  await app.listen(port);
   
-  console.log(`🚀 Servidor rodando na porta ${process.env.PORT ?? 3000}`);
+  console.log(`🚀 Servidor rodando na porta ${port}`);
 }
 bootstrap();

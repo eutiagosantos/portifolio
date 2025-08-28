@@ -40,7 +40,9 @@ const Contact = () => {
     setStatusMessage('');
 
     try {
-      const response = await fetch(process.env.API_URL + '/contact/send', {
+      // Usar a URL da API do ambiente ou fallback para desenvolvimento
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const response = await fetch(`${apiUrl}/contact/send`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
