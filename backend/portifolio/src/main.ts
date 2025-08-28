@@ -13,8 +13,10 @@ async function bootstrap() {
       'http://localhost:4173',
       'http://localhost:8080',
       'http://localhost:8081',
-      'https://portifolio-ashen-xi.vercel.app', // Para Vercel
-      process.env.FRONTEND_URL // URL do frontend em produção
+      'https://portifolio-ashen-xi.vercel.app', // URL principal da Vercel
+      'https://portifolio-hqyue8nte-tiagoalmeidasantos1812-1479s-projects.vercel.app', // URL de deployment
+      /https:\/\/.*\.vercel\.app$/, // Qualquer subdomínio da Vercel
+      process.env.FRONTEND_URL // URL adicional do frontend
     ].filter(Boolean),
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
