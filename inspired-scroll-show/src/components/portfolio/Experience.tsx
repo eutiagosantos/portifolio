@@ -16,7 +16,7 @@ const Experience = () => {
       location: "Belo Horizonte, MG",
       achievements: [
         "Colaborei no desenvolvimento de sistemas",
-        "Aprimorei soft skills e trabalho em equipe",
+        "Aprimorei soft skills e o trabalho em equipe",
         "Participei de reuniões de planejamento e implantação de projetos"
       ]
     },
